@@ -13,7 +13,7 @@ document.getElementById("gender").addEventListener("change", function () {
     submitButton.classList.add("hidden");
     hamilOrMenyusuiDiv.innerHTML = `
   <label class="mt-3">Hamil atau Menyusui?</label>
-  <select class="form-control mt-2" id="hamilMenyusui" required>
+  <select class="form-control mt-2" id="hamilMenyusui" name="hamilMenyusui" required>
     <option value="">Pilih</option>
     <option value="hamil">Hamil</option>
     <option value="menyusui">Menyusui</option>
@@ -36,12 +36,10 @@ document.getElementById("hamilOrMenyusui").addEventListener("change", function (
       var umurText = hamilMenyusui === "hamil" ? "Umur Hamil" : "Umur Menyusui";
       document.getElementById("umurHamilOrMenyusui").innerHTML = `
   <label class="mt-3">${umurText}:</label>
-  <input type="number" class="form-control mt-1" id="umurHamil" required min="0">
+  <input type="number" class="form-control mt-1" id="umur" name="umur" required min="0">
 `;
-      document
-        .getElementById("umurHamil")
-        .addEventListener("input", function () {
-          var umur = document.getElementById("umurHamil");
+      document.getElementById("umur").addEventListener("input", function () {
+          var umur = document.getElementById("umur");
           var submitButton = document.getElementById("submitButton");
 
           if (umur && umur.value.trim() !== "") {

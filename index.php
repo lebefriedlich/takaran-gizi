@@ -1,3 +1,7 @@
+<?php 
+    require 'resource.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,14 +16,24 @@
 <body>
     <div class="container">
         <h1>Input Data</h1>
-        <form id="inputForm">
+        <form action="index.php" method="post">
             <div class="form-group">
                 <label for="usia" class="mt-3">Usia:</label>
-                <input type="number" class="form-control mt-2" id="usia" required min="0">
+                <div class="row">
+                    <div class="col-md-10">
+                        <input type="number" class="form-control mt-2" id="usia" name="usia" required min="0">
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-control mt-2" id="tahunOrBulan" name="tahunOrBulan" required>
+                            <option value="tahun">Tahun</option>
+                            <option value="bulan">Bulan</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="gender" class="mt-3">Gender:</label>
-                <select class="form-control mt-2" id="gender" required>
+                <select class="form-control mt-2" id="gender" name="gender" required>
                     <option value="">Pilih Gender</option>
                     <option value="laki-laki">Laki-laki</option>
                     <option value="perempuan">Perempuan</option>
@@ -31,7 +45,7 @@
             <div class="form-group" id="umurHamilOrMenyusui">
 
             </div>
-            <button type="submit" class="btn btn-primary mt-3 hidden" id="submitButton">Submit</button>
+            <button type="submit" name="submit" class="btn btn-primary mt-3 hidden" id="submitButton">Submit</button>
         </form>
     </div>
 
