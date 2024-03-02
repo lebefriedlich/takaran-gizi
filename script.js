@@ -1,12 +1,14 @@
 document.getElementById("gender").addEventListener("change", function () {
   var gender = this.value;
   var hamilOrMenyusuiDiv = document.getElementById("hamilOrMenyusui");
-  var umurHamilDiv = document.getElementById("umurHamilOrMenyusui");
+  var umurHamilOrMenyusuiDiv = document.getElementById("umurHamilOrMenyusui");
 
-  if (gender === "laki-laki") {
+  if (gender === ""){
+    document.getElementById("submitButton").classList.add("hidden");
+  } else if (gender === "laki-laki") {
     document.getElementById("submitButton").classList.remove("hidden");
     hamilOrMenyusuiDiv.innerHTML = "";
-    umurHamilDiv.innerHTML = "";
+    umurHamilOrMenyusuiDiv.innerHTML = "";
   } else if (gender === "perempuan") {
     submitButton.classList.add("hidden");
     hamilOrMenyusuiDiv.innerHTML = `
@@ -21,28 +23,30 @@ document.getElementById("gender").addEventListener("change", function () {
   }
 });
 
-document
-  .getElementById("hamilOrMenyusui")
-  .addEventListener("change", function () {
+document.getElementById("hamilOrMenyusui").addEventListener("change", function () {
     var hamilMenyusui = document.getElementById("hamilMenyusui").value;
+    var umurHamilOrMenyusuiDiv = document.getElementById("umurHamilOrMenyusui");
     var submitButton = document.getElementById("submitButton");
 
     if (hamilMenyusui === "tidak") {
+      umurHamilOrMenyusuiDiv.innerHTML = "";
       submitButton.classList.remove("hidden");
     } else {
+      submitButton.classList.add("hidden");
       var umurText = hamilMenyusui === "hamil" ? "Umur Hamil" : "Umur Menyusui";
       document.getElementById("umurHamilOrMenyusui").innerHTML = `
   <label class="mt-3">${umurText}:</label>
-  <input type="number" class="form-control mt-1" id="umurHamil" required>
+  <input type="number" class="form-control mt-1" id="umurHamil" required min="0">
 `;
-    }
-    document.getElementById("umurHamil").addEventListener("input", function () {
-      var umur = document.getElementById("umurHamil");
-      var submitButton = document.getElementById("submitButton");
+      document
+        .getElementById("umurHamil")
+        .addEventListener("input", function () {
+          var umur = document.getElementById("umurHamil");
+          var submitButton = document.getElementById("submitButton");
 
-      if (umur && umur.value.trim() === "") {
-      } else {
-        submitButton.classList.remove("hidden");
-      }
-    });
+          if (umur && umur.value.trim() !== "") {
+            submitButton.classList.remove("hidden");
+          }
+        });
+    }
   });

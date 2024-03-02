@@ -6,11 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Input Data</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
-        .hidden {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -19,7 +15,7 @@
         <form id="inputForm">
             <div class="form-group">
                 <label for="usia" class="mt-3">Usia:</label>
-                <input type="number" class="form-control mt-2" id="usia" required>
+                <input type="number" class="form-control mt-2" id="usia" required min="0">
             </div>
             <div class="form-group">
                 <label for="gender" class="mt-3">Gender:</label>
